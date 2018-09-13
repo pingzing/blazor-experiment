@@ -1,0 +1,19 @@
+﻿@page "/experimentalpage"
+@inherits ExperimentalPageBase
+@using APIs.HSL
+@inject TransitAPI TransitService
+
+<div style="background-color: @ViewModel.Background; padding:5px">
+    <h1>This is the experimental page's title.</h1>
+</div>
+
+<button onclick="@GetTransitStops">Get Nearby Transit Stops</button>
+
+<ol>
+    @foreach (var transitStop in ViewModel.TransitStops)
+    {
+        <TransitStopComponent Name="@transitStop.Name"
+                              Code="@transitStop.Code"
+                              Coordinates="@transitStop.Coords"/>
+    }
+</ol>
